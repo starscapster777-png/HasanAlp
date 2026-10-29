@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasan Alp</title>
+<!-- Yazı tipleri: başlıklar için rock havalı font -->
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ===== RENKLER: buradan değiştir ===== */
+:root{
+  --mor:#9b30ff;
+  --yesil:#39ff14;
+  --koyu:#0d0a12;
+  --kart:#1a1324;
+  --yazi:#eee;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;background:var(--koyu);color:var(--yazi);line-height:1.6;
+  /* Arka plan: hafif çapraz çizgili doku */
+  background-image:repeating-linear-gradient(45deg,rgba(155,48,255,.04) 0 2px,transparent 2px 14px);
+}
+h1,h2{font-family:'Bungee',cursive}
+a{color:var(--yesil)}
+
+/* ===== ÜST MENÜ ===== */
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 1.2rem;background:rgba(13,10,18,.92);border-bottom:3px solid var(--mor)}
+nav .logo{font-family:'Permanent Marker';color:var(--yesil);font-size:1.4rem}
+nav ul{display:flex;gap:1rem;list-style:none}
+nav ul a{color:var(--yazi);text-decoration:none;font-weight:600;font-size:.9rem}
+nav ul a:hover{color:var(--yesil)}
+#dilBtn{background:var(--mor);color:#fff;border:2px solid var(--yesil);padding:.35rem .8rem;
+  font-family:'Bungee';cursor:pointer;border-radius:4px}
+#dilBtn:hover{background:var(--yesil);color:#000}
+
+/* ===== GİRİŞ (HERO) ===== */
+header{min-height:85vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem}
+header h1{font-size:clamp(2.5rem,9vw,6rem);
+  background:linear-gradient(90deg,var(--mor),var(--yesil));-webkit-background-clip:text;color:transparent;
+  text-shadow:0 0 30px rgba(155,48,255,.4)}
+.slogan{font-family:'Permanent Marker';font-size:clamp(1.3rem,4vw,2rem);color:var(--yesil);transform:rotate(-2deg);margin:.5rem 0}
+.okul{opacity:.8}
+/* Özel dokunuş: dönen ilgi alanı kelimesi */
+.donen{margin-top:1.5rem;font-size:1.2rem}
+.donen span{color:var(--mor);font-family:'Bungee';border-bottom:3px solid var(--yesil)}
+
+/* ===== BÖLÜMLER ===== */
+section{max-width:1000px;margin:auto;padding:4rem 1.2rem}
+section h2{font-size:clamp(1.6rem,5vw,2.4rem);color:var(--mor);margin-bottom:1.5rem;display:inline-block;
+  border-bottom:4px solid var(--yesil);transform:skew(-5deg)}
+.kartlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.kart{background:var(--kart);border:2px solid var(--mor);padding:1.3rem;border-radius:6px;
+  box-shadow:6px 6px 0 var(--yesil);transition:.2s}
+.kart:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--yesil)}
+.kart h3{color:var(--yesil);margin-bottom:.4rem}
+.etiket{display:inline-block;margin:.3rem;padding:.5rem 1rem;border:2px solid var(--yesil);
+  border-radius:30px;background:var(--kart);font-weight:600}
+.etiket:nth-child(even){border-color:var(--mor)}
+.bos{color:#888;font-style:italic}
+
+/* "Many minds" bölümü: her ilgi alanı farklı bir "kafa" */
+.kafalar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.kafa{text-align:center;padding:1.5rem 1rem;background:var(--kart);border-radius:10px;border:2px dashed var(--mor)}
+.kafa .ikon{font-size:2.8rem}
+.kafa:nth-child(odd){border-color:var(--yesil)}
+
+footer{text-align:center;padding:2rem;border-top:3px solid var(--mor);font-family:'Permanent Marker'}
+
+/* ===== TELEFON UYUMU ===== */
+@media(max-width:700px){
+  nav ul{display:none} /* Küçük ekranda menü linkleri gizlenir */
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚡ H.A.</div>
+  <ul>
+    <li><a href="#hakkimda" data-tr="Hakkımda" data-en="About"></a></li>
+    <li><a href="#projeler" data-tr="Projeler" data-en="Projects"></a></li>
+    <li><a href="#beceriler" data-tr="Beceriler" data-en="Skills"></a></li>
+    <li><a href="#deneyim" data-tr="Deneyim" data-en="Experience"></a></li>
+    <li><a href="#ilgi" data-tr="İlgi Alanları" data-en="Interests"></a></li>
+    <li><a href="#iletisim" data-tr="İletişim" data-en="Contact"></a></li>
+  </ul>
+  <!-- Dil değiştirme düğmesi -->
+  <button id="dilBtn">EN</button>
+</nav>
+
+<!-- ===== GİRİŞ ===== -->
+<header>
+  <h1>Hasan Alp</h1>
+  <p class="slogan">"Many interests, Many minds"</p>
+  <p class="okul" data-tr="İstanbul Yeni Yüzyıl Üniversitesi · 4. sınıf" data-en="Istanbul Yeni Yüzyil University · 4th year"></p>
+  <!-- Özel dokunuş: kelimeler JS ile değişir (listeyi aşağıda script'te düzenle) -->
+  <p class="donen"><span data-tr="Ben bir" data-en="I'm a"></span>&nbsp;<span id="donenKelime"></span></p>
+</header>
+
+<!-- ===== HAKKIMDA ===== -->
+<section id="hakkimda">
+  <h2 data-tr="Hakkımda" data-en="About Me"></h2>
+  <p data-tr="İngilizce diline bayılıyorum. Dünyanın birçoğu İngilizce konuşuyor, bu da bana yeni ve farklı kültürleri öğrenmem için kapı açıyor."
+     data-en="I love the English language. Much of the world speaks English, and that opens a door for me to learn new and different cultures."></p>
+  <h3 style="margin-top:1.5rem;color:var(--yesil)" data-tr="Çalışma Dillerim" data-en="Working Languages"></h3>
+  <div>
+    <span class="etiket" data-tr="İngilizce" data-en="English"></span>
+    <span class="etiket" data-tr="Türkçe" data-en="Turkish"></span>
+    <span class="etiket" data-tr="Almanca (başlangıç)" data-en="German (beginner)"></span>
+    <span class="etiket" data-tr="İtalyanca (başlangıç)" data-en="Italian (beginner)"></span>
+  </div>
+</section>
+
+<!-- ===== PROJELER: yeni proje için bir .kart kopyala ===== -->
+<section id="projeler">
+  <h2 data-tr="Projelerim" data-en="Projects"></h2>
+  <div class="kartlar">
+    <div class="kart">
+      <h3>Gamer's Delight</h3>
+      <p class="bos">[buraya ekle: açıklama]</p>
+      <p class="bos">[buraya ekle: bağlantı]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BECERİLER ===== -->
+<section id="beceriler">
+  <h2 data-tr="Becerilerim" data-en="Skills"></h2>
+  <div>
+    <span class="etiket" data-tr="CAT araçları (Trados, memoQ)" data-en="CAT tools (Trados, memoQ)"></span>
+    <span class="etiket">Canva</span>
+    <span class="etiket">Gemini</span>
+    <span class="etiket">Claude</span>
+  </div>
+</section>
+
+<!-- ===== DENEYİM: köşeli parantezleri kendi bilgilerinle doldur ===== -->
+<section id="deneyim">
+  <h2 data-tr="Deneyim" data-en="Experience"></h2>
+  <div class="kartlar">
+    <div class="kart"><h3 data-tr="Staj" data-en="Internship"></h3><p class="bos">[buraya ekle]</p></div>
+    <div class="kart"><h3 data-tr="Gönüllü Çeviri" data-en="Volunteer Translation"></h3><p class="bos">[buraya ekle]</p></div>
+    <div class="kart"><h3 data-tr="Kulüp" data-en="Club"></h3><p class="bos">[buraya ekle]</p></div>
+  </div>
+</section>
+
+<!-- ===== İLGİ ALANLARI ("Many minds") ===== -->
+<section id="ilgi">
+  <h2 data-tr="Birçok İlgi, Birçok Zihin" data-en="Many Interests, Many Minds"></h2>
+  <div class="kafalar">
+    <div class="kafa"><div class="ikon">🎬</div><p data-tr="Dizi Altyazısı" data-en="Series Subtitling"></p></div>
+    <div class="kafa"><div class="ikon">🏐</div><p data-tr="Voleybol" data-en="Volleyball"></p></div>
+    <div class="kafa"><div class="ikon">🎙️</div><p data-tr="Ses Aktörlüğü" data-en="Voice Acting"></p></div>
+    <div class="kafa"><div class="ikon">🌍</div><p data-tr="Diller & Kültürler" data-en="Languages & Cultures"></p></div>
+  </div>
+</section>
+
+<!-- ===== İLETİŞİM ===== -->
+<section id="iletisim">
+  <h2 data-tr="İletişim" data-en="Contact"></h2>
+  <p>📧 <a href="mailto:star.scapster777@gmail.com">star.scapster777@gmail.com</a></p>
+</section>
+
+<footer>🤘 Hasan Alp · Rock on 🤘</footer>
+
+<script>
+// ===== Dönen kelimeler: listeleri buradan düzenle =====
+const kelimeler = {
+  tr: ["çevirmenim 📝", "voleybolcuyum 🏐", "ses aktörüyüm 🎙️", "altyazıcıyım 🎬", "dil aşığıyım 🌍"],
+  en: ["translator 📝", "volleyball player 🏐", "voice actor 🎙️", "subtitler 🎬", "language lover 🌍"]
+};
+let dil = "tr", i = 0;
+
+// Sayfadaki tüm data-tr / data-en metinlerini seçili dile göre yazar
+function dilUygula(){
+  document.documentElement.lang = dil;
+  document.querySelectorAll("[data-tr]").forEach(el => el.textContent = el.dataset[dil]);
+  document.getElementById("dilBtn").textContent = dil === "tr" ? "EN" : "TR";
+  document.getElementById("donenKelime").textContent = kelimeler[dil][i];
+}
+document.getElementById("dilBtn").onclick = () => { dil = dil === "tr" ? "en" : "tr"; dilUygula(); };
+
+// Her 2 saniyede bir kelimeyi değiştir
+setInterval(() => {
+  i = (i + 1) % kelimeler[dil].length;
+  document.getElementById("donenKelime").textContent = kelimeler[dil][i];
+}, 2000);
+
+dilUygula();
+</script>
+</body>
+</html>
