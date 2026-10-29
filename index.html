@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hasan Alp</title>
 <!-- Yazı tipleri: başlıklar için rock havalı font -->
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<!-- Monoton: neon başlık | Rubik Glitch: bölüm başlıkları | Rock Salt: el yazısı | Space Grotesk: metin -->
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Rubik+Glitch&family=Rock+Salt&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ===== RENKLER: buradan değiştir ===== */
 :root{
@@ -18,22 +19,23 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Inter',sans-serif;background:var(--koyu);color:var(--yazi);line-height:1.6;
+  font-family:'Space Grotesk',sans-serif;background:var(--koyu);color:var(--yazi);line-height:1.6;
   /* Arka plan: hafif çapraz çizgili doku */
   background-image:repeating-linear-gradient(45deg,rgba(155,48,255,.04) 0 2px,transparent 2px 14px);
 }
-h1,h2{font-family:'Bungee',cursive}
+h1{font-family:'Monoton',cursive;font-weight:400}
+h2{font-family:'Rubik Glitch',cursive;font-weight:400}
 a{color:var(--yesil)}
 
 /* ===== ÜST MENÜ ===== */
 nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;
   padding:.8rem 1.2rem;background:rgba(13,10,18,.92);border-bottom:3px solid var(--mor)}
-nav .logo{font-family:'Permanent Marker';color:var(--yesil);font-size:1.4rem}
+nav .logo{font-family:'Rock Salt';color:var(--yesil);font-size:1.4rem}
 nav ul{display:flex;gap:1rem;list-style:none}
 nav ul a{color:var(--yazi);text-decoration:none;font-weight:600;font-size:.9rem}
 nav ul a:hover{color:var(--yesil)}
 #dilBtn{background:var(--mor);color:#fff;border:2px solid var(--yesil);padding:.35rem .8rem;
-  font-family:'Bungee';cursor:pointer;border-radius:4px}
+  font-family:'Rubik Glitch';cursor:pointer;border-radius:4px}
 #dilBtn:hover{background:var(--yesil);color:#000}
 
 /* ===== GİRİŞ (HERO) ===== */
@@ -41,11 +43,11 @@ header{min-height:85vh;display:flex;flex-direction:column;justify-content:center
 header h1{font-size:clamp(2.5rem,9vw,6rem);
   background:linear-gradient(90deg,var(--mor),var(--yesil));-webkit-background-clip:text;color:transparent;
   text-shadow:0 0 30px rgba(155,48,255,.4)}
-.slogan{font-family:'Permanent Marker';font-size:clamp(1.3rem,4vw,2rem);color:var(--yesil);transform:rotate(-2deg);margin:.5rem 0}
+.slogan{font-family:'Rock Salt';font-size:clamp(1.3rem,4vw,2rem);color:var(--yesil);transform:rotate(-2deg);margin:.5rem 0}
 .okul{opacity:.8}
 /* Özel dokunuş: dönen ilgi alanı kelimesi */
 .donen{margin-top:1.5rem;font-size:1.2rem}
-.donen span{color:var(--mor);font-family:'Bungee';border-bottom:3px solid var(--yesil)}
+.donen span{color:var(--mor);font-family:'Rubik Glitch';border-bottom:3px solid var(--yesil)}
 
 /* ===== BÖLÜMLER ===== */
 section{max-width:1000px;margin:auto;padding:4rem 1.2rem}
@@ -67,7 +69,32 @@ section h2{font-size:clamp(1.6rem,5vw,2.4rem);color:var(--mor);margin-bottom:1.5
 .kafa .ikon{font-size:2.8rem}
 .kafa:nth-child(odd){border-color:var(--yesil)}
 
-footer{text-align:center;padding:2rem;border-top:3px solid var(--mor);font-family:'Permanent Marker'}
+/* ===== EĞLENCELİ EFEKTLER ===== */
+/* Başlık: neon titreme */
+header h1{animation:neon 3s infinite}
+@keyframes neon{0%,18%,22%,62%,66%,100%{opacity:1}20%,64%{opacity:.4}}
+/* Slogan: hafif sallanma */
+.slogan{animation:salla 2.5s ease-in-out infinite}
+@keyframes salla{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(2deg) scale(1.05)}}
+/* Etiketler: üzerine gelince zıplar */
+.etiket{transition:.2s;cursor:default}
+.etiket:hover{transform:rotate(-6deg) scale(1.15);background:var(--mor);color:#fff}
+/* İlgi kartları: üzerine gelince ikon döner */
+.kafa{transition:.3s;cursor:pointer}
+.kafa:hover{transform:scale(1.07) rotate(2deg);background:#24183a}
+.kafa:hover .ikon{animation:don .6s}
+@keyframes don{to{transform:rotate(360deg) scale(1.3)}}
+/* Kaydırınca beliren bölümler */
+section{opacity:0;transform:translateY(40px);transition:.7s}
+section.gorunur{opacity:1;transform:none}
+/* Tıklayınca fırlayan emojiler */
+.patla{position:fixed;pointer-events:none;font-size:1.6rem;z-index:99;animation:ucus 1s ease-out forwards}
+@keyframes ucus{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+/* Arka planda süzülen notalar */
+.nota{position:fixed;bottom:-40px;z-index:-1;font-size:1.5rem;opacity:.25;animation:yuksel linear forwards}
+@keyframes yuksel{to{transform:translateY(-110vh) rotate(360deg)}}
+
+footer{text-align:center;padding:2rem;border-top:3px solid var(--mor);font-family:'Rock Salt'}
 
 /* ===== TELEFON UYUMU ===== */
 @media(max-width:700px){
@@ -120,8 +147,6 @@ footer{text-align:center;padding:2rem;border-top:3px solid var(--mor);font-famil
   <div class="kartlar">
     <div class="kart">
       <h3>Gamer's Delight</h3>
-      <p class="bos">[buraya ekle: açıklama]</p>
-      <p class="bos">[buraya ekle: bağlantı]</p>
     </div>
   </div>
 </section>
@@ -190,6 +215,39 @@ setInterval(() => {
 }, 2000);
 
 dilUygula();
+
+// ===== EĞLENCELİ EFEKTLER =====
+// Tıklanan yere emoji patlaması (emojileri buradan değiştir)
+const emojiler = ["🤘","🎸","⚡","🎙️","🏐","🎬","💜","💚"];
+document.addEventListener("click", e => {
+  for (let k = 0; k < 8; k++) {
+    const s = document.createElement("span");
+    s.className = "patla";
+    s.textContent = emojiler[Math.floor(Math.random() * emojiler.length)];
+    s.style.left = e.clientX + "px"; s.style.top = e.clientY + "px";
+    s.style.setProperty("--x", (Math.random() * 200 - 100) + "px");
+    s.style.setProperty("--y", (Math.random() * 200 - 100) + "px");
+    s.style.setProperty("--r", (Math.random() * 720 - 360) + "deg");
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1000);
+  }
+});
+
+// Arka planda yükselen notalar
+setInterval(() => {
+  const n = document.createElement("span");
+  n.className = "nota";
+  n.textContent = ["🎵","🎶","⚡","🎸"][Math.floor(Math.random() * 4)];
+  n.style.left = Math.random() * 100 + "vw";
+  n.style.animationDuration = (6 + Math.random() * 6) + "s";
+  document.body.appendChild(n);
+  setTimeout(() => n.remove(), 12000);
+}, 900);
+
+// Bölümler ekrana girince belirsin
+const gozcu = new IntersectionObserver(g => g.forEach(x => x.isIntersecting && x.target.classList.add("gorunur")), {threshold: .15});
+document.querySelectorAll("section").forEach(s => gozcu.observe(s));
 </script>
 </body>
 </html>
+```
